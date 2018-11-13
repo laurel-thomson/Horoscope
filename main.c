@@ -28,6 +28,24 @@ int main() {
   //sign = get_sign(test.monthNumber, test.day); //get_sign function returns their sign
 
   //printf("The person born on %s %d would be an %s\n", test.month, test.day, sign);
+  while (1)
+  {
+    date d;
+    printf("Enter date month: ");
+    scanf("%d", &d.monthNumber);
+    printf("Enter date day: ");
+    scanf("%d", &d.day);
+
+    if (is_valid_date(d))
+    {
+      printf("You entered a valid date :)\n");
+    }
+    else
+    {
+      printf("Not a valid date. D:\n");
+    }
+
+  }
 
   int birthmonth;
   printf("Enter the month of your birthday (example: May would be 5): ");
