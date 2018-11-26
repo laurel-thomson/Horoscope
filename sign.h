@@ -35,121 +35,144 @@ Zodiac * get_sign(Date * date) //returns the sign of the given date
       if (day < 20)
       {
         strcpy(zodiac->name, "Capricorn");
-	zodiac->index = CAPRICORN;
+		zodiac->index = CAPRICORN;
       }
       else
       {
-       // sign = "Aquarius";
+	    strcpy(zodiac->name, "Aquarius");
+		zodiac->index = AQUARIUS;
       }
       break;
     case 2:
       if (day < 19)
       {
-        //sign = "Aquarius";
+	    strcpy(zodiac->name, "Aquarius");
+		zodiac->index = AQUARIUS;
       }
       else
       {
-        //sign = "Pisces";
+		strcpy(zodiac->name, "Pisces");
+		zodiac->index = PISCES;
       }
       break;
     case 3:
       if (day < 21)
       {
-        //sign = "Pisces";
+		strcpy(zodiac->name, "Pisces");
+		zodiac->index = PISCES;
       }
       else
       {
-        //sign = "Aries";
+		strcpy(zodiac->name, "Aries");
+		zodiac->index = ARIES;
       }
       break;
     case 4:
       if (day < 20)
       {
-        //sign = "Aries";
+		strcpy(zodiac->name, "Aries");
+		zodiac->index = ARIES;
       }
       else
       {
-        //sign = "Taurus";
+		strcpy(zodiac->name, "Taurus");
+		zodiac->index = TAURUS;
       }
       break;
     case 5:
       if (day < 21)
       {
-       // sign = "Taurus";
+		strcpy(zodiac->name, "Taurus");
+		zodiac->index = TAURUS;
       }
       else
       {
-       // sign = "Gemini";
+		strcpy(zodiac->name, "Gemini");
+		zodiac->index = GEMINI;
       }
       break;
     case 6:
       if (day < 21)
       {
-        //sign = "Gemini";
+		strcpy(zodiac->name, "Gemini");
+		zodiac->index = GEMINI;
       }
       else
       {
-        //sign = "Cancer";
+		strcpy(zodiac->name, "Cancer");
+		zodiac->index = CANCER;
       }
       break;
     case 7:
       if (day < 23)
       {
-        //sign = "Cancer";
+		strcpy(zodiac->name, "Cancer");
+		zodiac->index = CANCER;
       }
       else
       {
-       // sign = "Leo";
+		strcpy(zodiac->name, "Leo");
+		zodiac->index = LEO;
       }
       break;
     case 8:
       if (day < 23)
       {
-        //sign = "Leo";
+		strcpy(zodiac->name, "Leo");
+		zodiac->index = LEO;
       }
       else
       {
-        //sign = "Virgo";
+		strcpy(zodiac->name, "Virgo");
+		zodiac->index = VIRGO;
       }
       break;
     case 9:
       if (day < 23)
       {
-       // sign = "Virgo";
+		strcpy(zodiac->name, "Virgo");
+		zodiac->index = VIRGO;
       }
       else
       {
-        //sign = "Libra";
+		strcpy(zodiac->name, "Libra");
+		zodiac->index = LIBRA;
       }
       break;
     case 10:
       if (day < 23)
       {
-        //sign = "Libra";
+		strcpy(zodiac->name, "Libra");
+		zodiac->index = LIBRA;
       }
       else
       {
-        //sign = "Scorpio";
+		strcpy(zodiac->name, "Scorpio");
+		zodiac->index = SCORPIO;
       }
       break;
     case 11:
       if (day < 22)
       {
-        //sign = "Scorpio";
+		strcpy(zodiac->name, "Scorpio");
+		zodiac->index = SCORPIO;
       }
       else
       {
-        //sign = "Sagittarius";
+		strcpy(zodiac->name, "Sagittarius");
+		zodiac->index = SAGITTARIUS;
       }
       break;
     case 12:
       if (day < 22)
       {
-        //sign = "Sagittarius";
+		strcpy(zodiac->name, "Sagittarius");
+		zodiac->index = SAGITTARIUS;
       }
       else
       {
-       // sign = "Capricorn";
+		strcpy(zodiac->name, "Capricorn");
+		zodiac->index = CAPRICORN;
       }
       break;
     default:
