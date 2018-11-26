@@ -21,6 +21,8 @@ int main() {
 		Date * date = get_date(birthmonth, birthday);
 		Zodiac * zodiac = get_sign(date);
 		printf("Your sign is a %s!\n", zodiac->name);
+		const char * fortune = get_fortune(zodiac, 0);
+		printf("Your fortune is %s\n", fortune);
 		free(date);
 		free(zodiac);
   }
