@@ -34,122 +34,122 @@ Zodiac * get_sign(Date * date) //returns the sign of the given date
     case 1:
       if (day < 20)
       {
-        zodiac->name = "Capricorn";
-		zodiac->index = CAPRICORN;
+        strcpy(zodiac->name, "Capricorn");
+	zodiac->index = CAPRICORN;
       }
       else
       {
-        sign = "Aquarius";
+       // sign = "Aquarius";
       }
       break;
     case 2:
       if (day < 19)
       {
-        sign = "Aquarius";
+        //sign = "Aquarius";
       }
       else
       {
-        sign = "Pisces";
+        //sign = "Pisces";
       }
       break;
     case 3:
       if (day < 21)
       {
-        sign = "Pisces";
+        //sign = "Pisces";
       }
       else
       {
-        sign = "Aries";
+        //sign = "Aries";
       }
       break;
     case 4:
       if (day < 20)
       {
-        sign = "Aries";
+        //sign = "Aries";
       }
       else
       {
-        sign = "Taurus";
+        //sign = "Taurus";
       }
       break;
     case 5:
       if (day < 21)
       {
-        sign = "Taurus";
+       // sign = "Taurus";
       }
       else
       {
-        sign = "Gemini";
+       // sign = "Gemini";
       }
       break;
     case 6:
       if (day < 21)
       {
-        sign = "Gemini";
+        //sign = "Gemini";
       }
       else
       {
-        sign = "Cancer";
+        //sign = "Cancer";
       }
       break;
     case 7:
       if (day < 23)
       {
-        sign = "Cancer";
+        //sign = "Cancer";
       }
       else
       {
-        sign = "Leo";
+       // sign = "Leo";
       }
       break;
     case 8:
       if (day < 23)
       {
-        sign = "Leo";
+        //sign = "Leo";
       }
       else
       {
-        sign = "Virgo";
+        //sign = "Virgo";
       }
       break;
     case 9:
       if (day < 23)
       {
-        sign = "Virgo";
+       // sign = "Virgo";
       }
       else
       {
-        sign = "Libra";
+        //sign = "Libra";
       }
       break;
     case 10:
       if (day < 23)
       {
-        sign = "Libra";
+        //sign = "Libra";
       }
       else
       {
-        sign = "Scorpio";
+        //sign = "Scorpio";
       }
       break;
     case 11:
       if (day < 22)
       {
-        sign = "Scorpio";
+        //sign = "Scorpio";
       }
       else
       {
-        sign = "Sagittarius";
+        //sign = "Sagittarius";
       }
       break;
     case 12:
       if (day < 22)
       {
-        sign = "Sagittarius";
+        //sign = "Sagittarius";
       }
       else
       {
-        sign = "Capricorn";
+       // sign = "Capricorn";
       }
       break;
     default:
