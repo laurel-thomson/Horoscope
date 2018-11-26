@@ -18,26 +18,27 @@ typedef struct date {
 
 
 typedef enum monthDay {
-  JAN = 31,
-  FEB = 28,
-  MAR = 31,
-  APR = 30,
-  MAY = 31,
-  JUN = 30,
-  JUL = 31,
-  AUG = 31,
-  SEP = 30,
-  OCT = 31,
-  NOV = 30,
-  DEC = 31
+  JAN_COUNT = 31,
+  FEB_COUNT = 28,
+  MAR_COUNT = 31,
+  APR_COUNT = 30,
+  MAY_COUNT = 31,
+  JUN_COUNT = 30,
+  JUL_COUNT = 31,
+  AUG_COUNT = 31,
+  SEP_COUNT = 30,
+  OCT_COUNT = 31,
+  NOV_COUNT = 30,
+  DEC_COUNT = 31
 } monthDay;
+
 
 /* january */
 month january = {
    "January",
    "JAN",
    1,
-   JAN
+   JAN_COUNT
 };
 
 /* february */
@@ -45,7 +46,7 @@ month february = {
   "February",
   "FEB",
   2,
-  FEB
+  FEB_COUNT
 };
 
 /* march */
@@ -53,7 +54,7 @@ month march = {
   "March",
   "MAR",
   3,
-  MAR
+  MAR_COUNT
 };
 
 /* april */
@@ -61,7 +62,7 @@ month april = {
   "April",
   "APR",
   4,
-  APR
+  APR_COUNT
 };
 
 /* may */
@@ -69,7 +70,7 @@ month may = {
   "May",
   "MAY",
   5,
-  MAY
+  MAY_COUNT
 };
 
 /* june */
@@ -77,7 +78,7 @@ month june = {
   "June",
   "JUN",
   6,
-  JUN
+  JUN_COUNT
 };
 
 /* july */
@@ -85,7 +86,7 @@ month july = {
   "July",
   "JUL",
   7,
-  JUL
+  JUL_COUNT
 };
 
 /* august */
@@ -93,7 +94,7 @@ month august = {
   "August",
   "AUG",
   8,
-  AUG
+  AUG_COUNT
 };
 
 /* september */
@@ -101,7 +102,7 @@ month september = {
   "September",
   "SEP",
   9,
-  SEP
+  SEP_COUNT
 };
 
 /* october */
@@ -109,7 +110,7 @@ month october = {
   "October",
   "OCT",
   10,
-  OCT
+  OCT_COUNT
 };
 
 /* november */
@@ -117,7 +118,7 @@ month november = {
   "November",
   "NOV",
   11,
-  NOV
+  NOV_COUNT
 };
 
 /* december */
@@ -125,7 +126,18 @@ month december = {
   "December",
   "DEC",
   12,
-  DEC
+  DEC_COUNT
 };
+
+month * monthsOfYear[] = { &january, &february, &march, &april, &may, &june, &july, &august, &september, &october, &november, &december };
+
+boolean is_valid_date(int m, int day)
+{
+	if (m < 0 || m > 12) return false;
+	if (date < 0 || date > 31) return false;
+	month *current_month = monthsOfYear[m];
+	if (*current_month->days < day) return false;
+	return true;
+}
 
 #endif

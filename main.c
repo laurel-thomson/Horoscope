@@ -25,6 +25,10 @@ int main() {
   scanf("%d", &birthday);
   printf("Total bithday is %d/%d\n", birthmonth, birthday);
   printf("\n");
+  
+  boolean is_valid = is_valid_date(birthmonth, birthday);
+  if (is_valid) printf("that is a valid date.");
+  else printf("NOT VALID!");
 
   char *newsign = get_sign(birthmonth, birthday);
   printf("Your sign is a %s!\n", newsign);
