@@ -6,4 +6,20 @@ typedef struct zodiac {
   char abrev[3]; //the three character abreviation of the sign (ex: virgo is VIR)
 } zodiac;
 
+typedef enum zodiac_enum {
+Aquarius,
+Pisces,
+Aries,
+Taurus,
+Gemini,
+Cancer,
+Leo,
+Virgo,
+Libra,
+Scorpio,
+Sagittarius,
+Capricorn
+} zodiac_enum;
+
+
 #endif
