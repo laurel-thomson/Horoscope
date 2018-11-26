@@ -22,7 +22,7 @@ int main() {
   if (is_valid)
   {
 		Date * date = get_date(birthmonth, birthday);
-		char *newsign = get_sign(birthmonth, birthday);
+		char *newsign = get_sign(date);
 		printf("Your sign is a %s!\n", newsign);
 		free(date);
   }
