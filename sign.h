@@ -5,36 +5,37 @@
 #ifndef SIGN
 #define SIGN
 
-typedef struct zodiac {
-  char name[10]; //the full friendly name of the zodiac sign
-  char abrev[3]; //the three character abreviation of the sign (ex: virgo is VIR)
-} zodiac;
+typedef struct Zodiac {
+  char name[12]; //the full friendly name of the zodiac sign
+  int index;
+} Zodiac;
 
 typedef enum zodiac_enum {
-Aquarius,
-Pisces,
-Aries,
-Taurus,
-Gemini,
-Cancer,
-Leo,
-Virgo,
-Libra,
-Scorpio,
-Sagittarius,
-Capricorn
+AQUARIUS,
+PISCES,
+ARIES,
+TAURUS,
+GEMINI,
+CANCER,
+LEO,
+VIRGO,
+LIBRA,
+SCORPIO,
+SAGITTARIUS,
+CAPRICORN
 } zodiac_enum;
 
-char * get_sign(Date * date) //returns the sign of the given date
+Zodiac * get_sign(Date * date) //returns the sign of the given date
 {
-  char * sign;
+  Zodiac * zodiac = malloc(sizeof(Zodiac));
   int day = date->day;
   switch (date->month->monthNumber)
   {
     case 1:
       if (day < 20)
       {
-        sign = "Capricorn";
+        zodiac->name = "Capricorn";
+		zodiac->index = CAPRICORN;
       }
       else
       {
@@ -156,7 +157,7 @@ char * get_sign(Date * date) //returns the sign of the given date
       break;
   }
 
-  return sign;
+  return zodiac;
 }
 
 #endif
