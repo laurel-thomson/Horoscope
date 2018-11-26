@@ -25,10 +25,11 @@ Sagittarius,
 Capricorn
 } zodiac_enum;
 
-char * get_sign(int month, int day) //returns the sign of the given date
+char * get_sign(Date * date) //returns the sign of the given date
 {
   char * sign;
-  switch (month)
+  int day = date->day;
+  switch (date->month->monthNumber)
   {
     case 1:
       if (day < 20)
