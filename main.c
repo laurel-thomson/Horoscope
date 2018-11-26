@@ -6,14 +6,6 @@
 
 int main() {
 
-  /* aquarius */
-  zodiac aquarius = {
-    "Aquarius",
-    "AQU"
-  };
-
-  date test = { "January", 1, 21 }; //a sample day
-
   int birthmonth;
   printf("Enter the month of your birthday (example: May would be 5): ");
   scanf("%d", &birthmonth);

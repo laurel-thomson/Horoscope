@@ -134,9 +134,9 @@ month * monthsOfYear[] = { &january, &february, &march, &april, &may, &june, &ju
 boolean is_valid_date(int m, int day)
 {
 	if (m < 0 || m > 12) return false;
-	if (date < 0 || date > 31) return false;
-	month *current_month = monthsOfYear[m];
-	if (*current_month->days < day) return false;
+	if (day < 0 || day > 31) return false;
+	month *current_month = monthsOfYear[m-1];
+	if (current_month->days < day) return false;
 	return true;
 }
 
