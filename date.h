@@ -3,18 +3,18 @@
 
 typedef enum boolean { false, true } boolean;
 
-typedef struct month {
+typedef struct Month {
   char *name; //the full friendly name of the month
   char abrev[3]; //the three character abreviation of the month (ex: JAN)
   int monthNumber; //the month number
   int days; //the number of days in the month
-} month;
+} Month;
 
-typedef struct date {
+typedef struct Date {
   char month[10]; //the month of the date
   int monthNumber; //the month number of the date
   int day; //the day of the date
-} date;
+} Date;
 
 
 typedef enum monthDay {
@@ -34,7 +34,7 @@ typedef enum monthDay {
 
 
 /* january */
-month january = {
+Month january = {
    "January",
    "JAN",
    1,
@@ -42,7 +42,7 @@ month january = {
 };
 
 /* february */
-month february = {
+Month february = {
   "February",
   "FEB",
   2,
@@ -50,7 +50,7 @@ month february = {
 };
 
 /* march */
-month march = {
+Month march = {
   "March",
   "MAR",
   3,
@@ -58,7 +58,7 @@ month march = {
 };
 
 /* april */
-month april = {
+Month april = {
   "April",
   "APR",
   4,
@@ -66,7 +66,7 @@ month april = {
 };
 
 /* may */
-month may = {
+Month may = {
   "May",
   "MAY",
   5,
@@ -74,7 +74,7 @@ month may = {
 };
 
 /* june */
-month june = {
+Month june = {
   "June",
   "JUN",
   6,
@@ -82,7 +82,7 @@ month june = {
 };
 
 /* july */
-month july = {
+Month july = {
   "July",
   "JUL",
   7,
@@ -90,7 +90,7 @@ month july = {
 };
 
 /* august */
-month august = {
+Month august = {
   "August",
   "AUG",
   8,
@@ -98,7 +98,7 @@ month august = {
 };
 
 /* september */
-month september = {
+Month september = {
   "September",
   "SEP",
   9,
@@ -106,7 +106,7 @@ month september = {
 };
 
 /* october */
-month october = {
+Month october = {
   "October",
   "OCT",
   10,
@@ -114,7 +114,7 @@ month october = {
 };
 
 /* november */
-month november = {
+Month november = {
   "November",
   "NOV",
   11,
@@ -122,20 +122,20 @@ month november = {
 };
 
 /* december */
-month december = {
+Month december = {
   "December",
   "DEC",
   12,
   DEC_COUNT
 };
 
-month * monthsOfYear[] = { &january, &february, &march, &april, &may, &june, &july, &august, &september, &october, &november, &december };
+Month * monthsOfYear[] = { &january, &february, &march, &april, &may, &june, &july, &august, &september, &october, &november, &december };
 
 boolean is_valid_date(int m, int day)
 {
 	if (m < 0 || m > 12) return false;
 	if (day < 0 || day > 31) return false;
-	month *current_month = monthsOfYear[m-1];
+	Month *current_month = monthsOfYear[m-1];
 	if (current_month->days < day) return false;
 	return true;
 }
