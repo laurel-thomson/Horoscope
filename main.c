@@ -3,6 +3,7 @@
 #include <string.h>
 #include "date.h"
 #include "sign.h"
+#include "fortune.h"
 
 int main() {
 

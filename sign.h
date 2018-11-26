@@ -2,7 +2,7 @@
 #define SIGN
 
 typedef struct Zodiac {
-  char name[12]; //the full friendly name of the zodiac sign
+  char name[12];
   int index;
 } Zodiac;
 
