@@ -18,4 +18,11 @@ const char * get_fortune(Zodiac * zodiac, Moon moon)
 	return fortunes[moon][zodiac->index];
 }
 
+//this is hard-coded in for now as well - will need to read in from moon phases CSV
+Moon get_moon(Date * date)
+{
+	if (date->day < 16) return NEW;
+	return FULL;
+}
+
 #endif
