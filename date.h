@@ -11,9 +11,8 @@ typedef struct Month {
 } Month;
 
 typedef struct Date {
-  char month[10]; //the month of the date
-  int monthNumber; //the month number of the date
-  int day; //the day of the date
+	Month * month;
+	int day;
 } Date;
 
 
@@ -131,13 +130,22 @@ Month december = {
 
 Month * monthsOfYear[] = { &january, &february, &march, &april, &may, &june, &july, &august, &september, &october, &november, &december };
 
-boolean is_valid_date(int m, int day)
+boolean is_valid_date(int m, int d)
 {
 	if (m < 0 || m > 12) return false;
-	if (day < 0 || day > 31) return false;
+	if (d < 0 || d > 31) return false;
 	Month *current_month = monthsOfYear[m-1];
-	if (current_month->days < day) return false;
+	if (current_month->days < d) return false;
 	return true;
 }
+
+Date* get_date(int m, int d)
+{
+	Date *date = malloc(sizeof(Date));
+	date->month = &(monthsOfYear[m-1]);
+	date->day = d;
+	return date;
+}
+
 
 #endif

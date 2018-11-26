@@ -19,10 +19,13 @@ int main() {
   printf("\n");
   
   boolean is_valid = is_valid_date(birthmonth, birthday);
-  if (is_valid) printf("that is a valid date.");
+  if (is_valid)
+  {
+		Date * date = get_date(birthmonth, birthday);
+		char *newsign = get_sign(birthmonth, birthday);
+		printf("Your sign is a %s!\n", newsign);
+		free(date);
+  }
   else printf("NOT VALID!");
-
-  char *newsign = get_sign(birthmonth, birthday);
-  printf("Your sign is a %s!\n", newsign);
   return 0;
 }
