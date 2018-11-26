@@ -1,3 +1,5 @@
+#include <time.h>
+
 #ifndef DATE
 #define DATE
 
@@ -139,13 +141,23 @@ boolean is_valid_date(int m, int d)
 	return true;
 }
 
-Date* get_date(int m, int d)
+Date * get_date(int m, int d)
 {
 	Date *date = malloc(sizeof(Date));
 	date->month = monthsOfYear[m-1];
 	date->day = d;
 	return date;
 }
+
+Date * get_current_date()
+{
+	time_t t = time(NULL);
+	struct tm *tm = localtime(&t);
+	//the tm struct stores the index of the month from 0 to 11
+	int month = tm->tm_mon + 1;
+	int day = tm->tm_mday;
+	return get_date(month, day);
+} 
 
 
 #endif

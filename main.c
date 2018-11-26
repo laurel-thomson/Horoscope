@@ -18,12 +18,17 @@ int main() {
   boolean is_valid = is_valid_date(birthmonth, birthday);
   if (is_valid)
   {
-		Date * date = get_date(birthmonth, birthday);
-		Zodiac * zodiac = get_sign(date);
+		Date * birth_date = get_date(birthmonth, birthday);
+		Date * current_date = get_current_date();
+		Zodiac * zodiac = get_sign(birth_date);
+
 		printf("Your sign is a %s!\n", zodiac->name);
-		const char * fortune = get_fortune(zodiac, get_moon(date));
+
+		const char * fortune = get_fortune(zodiac, get_moon(current_date));
 		printf("Your fortune is %s\n", fortune);
-		free(date);
+
+		free(birth_date);
+		free(current_date);
 		free(zodiac);
   }
   else printf("NOT VALID!");
