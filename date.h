@@ -142,7 +142,7 @@ boolean is_valid_date(int m, int d)
 Date* get_date(int m, int d)
 {
 	Date *date = malloc(sizeof(Date));
-	date->month = &(monthsOfYear[m-1]);
+	date->month = monthsOfYear[m-1];
 	date->day = d;
 	return date;
 }
