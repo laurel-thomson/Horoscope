@@ -21,12 +21,12 @@ int main() {
 		char filename[MAX_FILENAME_LENGTH];
 		printf("What file would you like to read from? ");
 		scanf("%s",filename);
-		//read_fortunes(filename);
+		readFile(filename);
 	}
 	else
 	{
 		//read in from the default file
-		//read_fortunes(DEFAULT_FORTUNE_FILE);
+		readFile(DEFAULT_FORTUNE_FILE);
 	}
 
 	while (true)
@@ -82,5 +82,6 @@ int main() {
 		else printf("You have not entered a valid date!\n");
 	}
 	//call function to free fortune memory
+	freeData();
 	return 0;
 }
