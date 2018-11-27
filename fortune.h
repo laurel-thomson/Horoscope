@@ -25,8 +25,8 @@ Moon get_moon(Date * date)
 }
 
 //Code to read in from CSV file
-void readFile(char * filename, char * input){
-   FILE * f = fopen("filename", "r");
+void readFile(char * filename){
+   FILE * f = fopen(filename, "r");
    char buf[1024];
 
    if(f == NULL){
@@ -40,7 +40,7 @@ void readFile(char * filename, char * input){
 	  }
 	}
    }
-   fclose(input);
+   fclose(f);
 }
 
 //Method to free inputted fortune data
