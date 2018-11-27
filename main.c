@@ -1,65 +1,36 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "month.h"
 #include "date.h"
-#include "zodiac.h"
 #include "sign.h"
+#include "fortune.h"
 
 int main() {
-  /*printf("The month is %s, abrev is %s, number is %d, days is %d\n",
-   january.name,
-   january.abrev,
-   january.monthNumber,
-   january.days);*/
-
-  /* aquarius */
-  zodiac aquarius = {
-    "Aquarius",
-    "AQU"
-  };
-
-  date test = { "January", 1, 21 }; //a sample day
-
-  //char *sign; //the sign of the person which we will update later
-
-  //printf("The test date is %s %d\n", test.month, test.day);
-
-  //sign = get_sign(test.monthNumber, test.day); //get_sign function returns their sign
-
-  //printf("The person born on %s %d would be an %s\n", test.month, test.day, sign);
-  while (1)
-  {
-    date d;
-    printf("Enter date month: ");
-    scanf("%d", &d.monthNumber);
-    printf("Enter date day: ");
-    scanf("%d", &d.day);
-
-    if (is_valid_date(d))
-    {
-      printf("You entered a valid date :)\n");
-    }
-    else
-    {
-      printf("Not a valid date. D:\n");
-    }
-
-  }
 
   int birthmonth;
   printf("Enter the month of your birthday (example: May would be 5): ");
   scanf("%d", &birthmonth);
-  printf("Birth month is %d\n", birthmonth);
-  printf("\n");
 
   int birthday;
   printf("Enter the day of your birthday (example: 16): ");
   scanf("%d", &birthday);
-  printf("Total bithday is %d/%d\n", birthmonth, birthday);
-  printf("\n");
+  
+  boolean is_valid = is_valid_date(birthmonth, birthday);
+  if (is_valid)
+  {
+		Date * birth_date = get_date(birthmonth, birthday);
+		Date * current_date = get_current_date();
+		Zodiac * zodiac = get_sign(birth_date);
 
-  char *newsign = get_sign(birthmonth, birthday);
-  printf("Your sign is a %s!\n", newsign);
+		printf("Your sign is a %s!\n", zodiac->name);
+
+		const char * fortune = get_fortune(zodiac, get_moon(current_date));
+		printf("Your fortune is %s\n", fortune);
+
+		free(birth_date);
+		free(current_date);
+		free(zodiac);
+  }
+  else printf("NOT VALID!");
   return 0;
 }
