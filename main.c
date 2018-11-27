@@ -4,6 +4,7 @@
 #include "date.h"
 #include "sign.h"
 #include "fortune.h"
+#include "moon.h"
 
 int main() {
 
@@ -14,7 +15,7 @@ int main() {
   int birthday;
   printf("Enter the day of your birthday (example: 16): ");
   scanf("%d", &birthday);
-  
+
   boolean is_valid = is_valid_date(birthmonth, birthday);
   if (is_valid)
   {
@@ -26,6 +27,9 @@ int main() {
 
 		const char * fortune = get_fortune(zodiac, get_moon(current_date));
 		printf("Your fortune is %s\n", fortune);
+
+    char* phase = moon_phase(2018, birthmonth, birthday);
+    printf("The moon phase on your birthday this year is %s\n", phase);
 
 		free(birth_date);
 		free(current_date);
