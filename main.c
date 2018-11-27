@@ -24,7 +24,22 @@ int main() {
 
 		printf("Your sign is a %s!\n", zodiac->name);
 
-		const char * fortune = get_fortune(zodiac, get_moon(current_date));
+		Moon moon = get_moon(current_date);
+		
+		char * moon_string;
+
+		if (moon == 0)
+		{
+			moon_string = "new";
+		}
+		else
+		{
+			moon_string = "full";
+		}
+	
+		printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,moon_string);
+
+		const char * fortune = get_fortune(zodiac, moon);
 		printf("Your fortune is %s\n", fortune);
 
 		free(birth_date);
