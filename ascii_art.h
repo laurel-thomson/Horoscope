@@ -1,6 +1,8 @@
 #ifndef ASCII_ART
 #define ASCII_ART
 
+//zodiac art source: https://asciiart.website/index.php?art=religion/astrology
+
 char * aquarius_art = "\n\n"
 "   .-\"-._.-\"-._.-\n"
 "   .-\"-._.-\"-._.-\n\n";
