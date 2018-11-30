@@ -4,6 +4,7 @@
 #include "date.h"
 #include "sign.h"
 #include "fortune.h"
+#include "moon.h"
 
 #define MAX_FILENAME_LENGTH 100
 
@@ -57,22 +58,15 @@ int main() {
 
 			printf("Your sign is a %s!\n", zodiac->name);
 
-			Moon moon = get_moon(current_date);
+			//printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,moon_string);
+			int your_moon = moon_phase(2018, birth_date->month->monthNumber, birth_date->day);
+			char* your_moon_string = convert_moon_phase_to_string(your_moon);
+			printf("The moon phase on your birthday this year is a %s!\n", your_moon_string);
 
-			char * moon_string;
+			if (your_moon >= 0 && your_moon <= 4) your_moon = 0; //moon for fortune calc is new_moon
+			else { your_moon = 1; } //moon is full for fortune calculation
 
-			if (moon == 0)
-			{
-				moon_string = "new";
-			}
-			else
-			{
-				moon_string = "full";
-			}
-
-			printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,moon_string);
-
-			const char * fortune = get_fortune(zodiac, moon);
+			const char * fortune = get_fortune(zodiac, your_moon);
 			printf("Your fortune is %s\n", fortune);
 
 			free(birth_date);

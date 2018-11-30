@@ -7,7 +7,7 @@
 //and https://www.subsystems.us/uploads/9/8/9/4/98948044/moonphase.pdf
 //NOTE: this is a simple calculation and doesn't account for several factors, so
 //it may be off ;-)
-char* moon_phase(int year, int month, int day)
+int moon_phase(int year, int month, int day)
 {
   //begin calculation to find the Julian Date (days since Jan 1, 4713 BC)
   if (month == 1 || month == 2) //if month is Jan or Feb
@@ -40,30 +40,66 @@ char* moon_phase(int year, int month, int day)
   //multiply by 29.53 (days per moon cycles) to get days into cycle
   double days_into = frac * 29.53;
 
-  char * phase;
+  int phase;
   if (days_into >= 0 && days_into <= 7)
   {
-    if (days_into >= 0 && days_into < 2) phase = "New";
-    else if (days_into >= 6 && days_into < 8) phase = "Third Quarter";
-    else { phase = "Waning Crescent"; };
+    if (days_into >= 0 && days_into < 2) phase = 0;
+    else if (days_into >= 6 && days_into < 8) phase = 1;
+    else { phase = 2; };
   }
   else if (days_into > 7 && days_into <= 15)
   {
-    if (days_into >= 14 && days_into < 16) phase = "Full Moon";
-    else { phase = "Waning Gibbous"; };
+    if (days_into >= 14 && days_into < 16) phase = 3;
+    else { phase = 4; };
   }
   else if (days_into > 15 && days_into <= 22)
   {
-    if (days_into >= 21 && days_into < 23) phase = "First Quarter";
-    else { phase = "Waxing Gibbous"; };
+    if (days_into >= 21 && days_into < 23) phase = 5;
+    else { phase = 6; };
   }
   else if (days_into > 22 && days_into <= 29.5)
   {
-    if (days_into >= 29) phase = "New";
-    else { phase = "Waxing Crescent"; };
+    if (days_into >= 29) phase = 0;
+    else { phase = 7; };
   }
 
   return phase;
+}
+
+char* convert_moon_phase_to_string(int moon)
+{
+  char* name;
+  switch (moon)
+  {
+    case 0:
+      name = "New";
+      break;
+    case 1:
+      name = "First Quarter";
+      break;
+    case 2:
+      name = "Waning Crescent";
+      break;
+    case 3:
+      name = "Full Moon";
+      break;
+    case 4:
+      name = "Waning Gibbous";
+      break;
+    case 5:
+      name = "Last Quarter";
+      break;
+    case 6:
+      name = "Waxing Gibbous";
+      break;
+    case 7:
+      name = "Waxing Crescent";
+      break;
+    default:
+      name = "Error";
+      break;
+  }
+  return name;
 }
 
 #endif
