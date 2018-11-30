@@ -7,8 +7,12 @@
 //and https://www.subsystems.us/uploads/9/8/9/4/98948044/moonphase.pdf
 //NOTE: this is a simple calculation and doesn't account for several factors, so
 //it may be off ;-)
-int moon_phase(int year, int month, int day)
+int moon_phase(Date * d) //int year, int month, int day
 {
+  int year = d->year;
+  int month = d->month->monthNumber;
+  int day = d->day;
+
   //begin calculation to find the Julian Date (days since Jan 1, 4713 BC)
   if (month == 1 || month == 2) //if month is Jan or Feb
   {
