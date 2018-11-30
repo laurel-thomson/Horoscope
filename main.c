@@ -4,6 +4,7 @@
 #include "date.h"
 #include "sign.h"
 #include "fortune.h"
+#include "moon.h"
 
 #define MAX_FILENAME_LENGTH 100
 
