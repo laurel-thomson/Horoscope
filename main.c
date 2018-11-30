@@ -140,7 +140,7 @@ void get_current_moon()
 	Date * current_date = get_current_date();
 	int your_moon = moon_phase(current_date);
 	char* your_moon_string = convert_moon_phase_to_string(your_moon);
-	printf("The moon phase on your birthday this year is a %s!\n", your_moon_string);
+	printf("Today is %d/%d/%d and the moon phase is  %s!\n", current_date->month->monthNumber, current_date->day, current_date->year,your_moon_string);
 }
 
 void get_birthday_moon()

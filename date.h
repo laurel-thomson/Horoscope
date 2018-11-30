@@ -15,7 +15,7 @@ typedef struct Month {
 typedef struct Date {
 	Month * month;
 	int day;
-  int year;
+ 	int year;
 } Date;
 
 
@@ -177,7 +177,7 @@ Date * get_current_date()
 	//the tm struct stores the index of the month from 0 to 11
 	int month = tm->tm_mon + 1;
 	int day = tm->tm_mday;
- 	int year = tm->tm_year;
+ 	int year = tm->tm_year + 1900;
 	return get_date(month, day, year);
 }
 
