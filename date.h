@@ -15,6 +15,7 @@ typedef struct Month {
 typedef struct Date {
 	Month * month;
 	int day;
+  int year;
 } Date;
 
 
@@ -137,7 +138,7 @@ boolean is_valid_date(int m, int d)
 	if (m < 0 || m > 12) return false;
 	if (d < 0 || d > 31) return false;
 	Month *current_month = monthsOfYear[m-1];
-	
+
 	//special case for February & leap year
 	if (m == 2 && d == 29)
 	{
@@ -145,7 +146,7 @@ boolean is_valid_date(int m, int d)
         int year;
         printf("What is the year of your birthday? (ex: 2012)\n");
         scanf("%d", &year);
-		
+
 		if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) //is it a leap year
         {
 			return true; //valid leap year date
@@ -160,11 +161,12 @@ boolean is_valid_date(int m, int d)
 	return true;
 }
 
-Date * get_date(int m, int d)
+Date * get_date(int m, int d, int y)
 {
 	Date *date = malloc(sizeof(Date));
 	date->month = monthsOfYear[m-1];
 	date->day = d;
+  date->year = y;
 	return date;
 }
 
@@ -175,7 +177,8 @@ Date * get_current_date()
 	//the tm struct stores the index of the month from 0 to 11
 	int month = tm->tm_mon + 1;
 	int day = tm->tm_mday;
-	return get_date(month, day);
+  int year = tm->tm_year;
+	return get_date(month, day, year);
 }
 
 #endif
