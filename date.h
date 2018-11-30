@@ -166,7 +166,7 @@ Date * get_date(int m, int d, int y)
 	Date *date = malloc(sizeof(Date));
 	date->month = monthsOfYear[m-1];
 	date->day = d;
-  date->year = y;
+  	date->year = y;
 	return date;
 }
 
@@ -177,7 +177,7 @@ Date * get_current_date()
 	//the tm struct stores the index of the month from 0 to 11
 	int month = tm->tm_mon + 1;
 	int day = tm->tm_mday;
-  int year = tm->tm_year;
+ 	int year = tm->tm_year;
 	return get_date(month, day, year);
 }
 

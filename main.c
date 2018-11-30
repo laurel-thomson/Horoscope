@@ -4,6 +4,7 @@
 #include "date.h"
 #include "sign.h"
 #include "fortune.h"
+#include "moon.h"
 
 #define MAX_FILENAME_LENGTH 100
 
@@ -64,7 +65,7 @@ void print_menu()
 	printf("Choose one of the menu options: \n\n"
 			"---------(1)Have your fortune told\n"
 			"---------(2)Get the current moon phase\n"
-			"---------(3)Get the moon phase of any day\n"
+			"---------(3)Get the moon phase of your birthday\n"
 			"---------(4)Upload a fortune csv file\n"
 			"---------(5)Quit\n");
 	if (!isFirst) getchar();
@@ -76,13 +77,13 @@ void print_menu()
 			state = TELL_FORTUNE;
 			break;
 		case '2':
-			state = UPLOAD_CSV;
-			break;
-		case '3':
 			state = GET_CURRENT_MOON;
 			break;
-		case '4':
+		case '3':
 			state = GET_BIRTHDAY_MOON;
+			break;
+		case '4':
+			state = UPLOAD_CSV;
 			break;
 		case '5':
 			state = QUIT;
@@ -113,9 +114,9 @@ void tell_fortune()
 
 		printf("Your sign is a %s!\n", zodiac->name);
 
-		Moon moon_phase = get_moon_enum(moon_phase(current_date));
+		Moon moon = get_moon_enum(moon_phase(current_date));
 
-		const char * fortune = get_fortune(zodiac, moon_phase);
+		const char * fortune = get_fortune(zodiac, moon);
 		printf("Your fortune is %s\n", fortune);
 
 		free(birth_date);
@@ -143,16 +144,15 @@ void get_current_moon()
 
 void get_birthday_moon()
 {
-	int month;
+	int birthmonth;
 	printf("Enter a month as a number (example: May would be 5): ");
-	scanf("%d", &month);
+	scanf("%d", &birthmonth);
 
-	int day;
+	int birthday;
 	printf("Enter the the day of the month (example: 16): ");
-	scanf("%d", &day);
+	scanf("%d", &birthday);
 
-	
-	boolean is_valid = is_valid_date(month, day);
+	boolean is_valid = is_valid_date(birthmonth, birthday);
 
 	if (is_valid)
 	{
