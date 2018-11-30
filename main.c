@@ -5,6 +5,7 @@
 #include "sign.h"
 #include "fortune.h"
 #include "moon.h"
+#include "ascii_art.h"
 
 #define MAX_FILENAME_LENGTH 100
 
@@ -114,6 +115,7 @@ void tell_fortune()
 		Zodiac * zodiac = get_sign(birth_date);
 
 		printf("Your sign is a %s!\n", zodiac->name);
+		print_ascii_art(zodiac);
 
 		Moon moon = get_moon_enum(moon_phase(current_date));
 
