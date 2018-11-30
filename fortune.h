@@ -29,7 +29,7 @@ void readFile(char * filename){
    if(filename == "" || filename == NULL){printf("No file name given\n");}
    else{
 	strtok(filename, "\n");
-	printf("Creating fortune from default file: %s\n", filename);
+	//printf("Creating fortune from default file: %s\n", filename);
 	FILE * f = fopen(filename, "r");
    	char str[1024];
 
