@@ -44,7 +44,7 @@ char* moon_phase(int year, int month, int day)
   if (days_into >= 0 && days_into <= 7)
   {
     if (days_into >= 0 && days_into < 2) phase = "New";
-    else if (days_into >= 6 && days_into < 8) phase = "Third Quarter";
+    else if (days_into >= 6 && days_into < 8) phase = "First Quarter";
     else { phase = "Waning Crescent"; };
   }
   else if (days_into > 7 && days_into <= 15)
@@ -54,7 +54,7 @@ char* moon_phase(int year, int month, int day)
   }
   else if (days_into > 15 && days_into <= 22)
   {
-    if (days_into >= 21 && days_into < 23) phase = "First Quarter";
+    if (days_into >= 21 && days_into < 23) phase = "Last Quarter";
     else { phase = "Waxing Gibbous"; };
   }
   else if (days_into > 22 && days_into <= 29.5)

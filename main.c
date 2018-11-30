@@ -29,7 +29,7 @@ int main() {
 		printf("Your fortune is %s\n", fortune);
 
     char* phase = moon_phase(2018, birthmonth, birthday);
-    printf("The moon phase on your birthday this year is %s\n", phase);
+    printf("The moon phase on your birthday this year is a %s!\n", phase);
 
 		free(birth_date);
 		free(current_date);
