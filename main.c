@@ -8,13 +8,21 @@
 #define MAX_FILENAME_LENGTH 100
 
 const char * DEFAULT_FORTUNE_FILE = "MoonPhaseFortunes.csv";
+
+void tell_fortune();
+void upload_csv();
+void get_current_moon();
+void get_birthday_moon();
+void print_menu();
+Moon get_moon_enum(int your_moon);
+
 boolean isFirst = true;
 
 typedef enum FortuneTellerState {
 	TELL_FORTUNE,
 	UPLOAD_CSV,
 	GET_CURRENT_MOON,
-	GET_ANY_MOON,
+	GET_BIRTHDAY_MOON,
 	QUIT
 } FortuneTellerState;
 
@@ -39,8 +47,8 @@ int main() {
 			case GET_CURRENT_MOON:
 				get_current_moon();
 				break;
-			case GET_ANY_MOON:
-				get_any_moon();
+			case GET_BIRTHDAY_MOON:
+				get_birthday_moon();
 				break;
 			default:
 				break;
@@ -74,7 +82,7 @@ void print_menu()
 			state = GET_CURRENT_MOON;
 			break;
 		case '4':
-			state = GET_ANY_MOON;
+			state = GET_BIRTHDAY_MOON;
 			break;
 		case '5':
 			state = QUIT;
@@ -99,15 +107,15 @@ void tell_fortune()
 
 	if (is_valid)
 	{
-		Date * birth_date = get_date(birthmonth, birthday);
+		Date * birth_date = get_date(birthmonth, birthday,2018);
 		Date * current_date = get_current_date();
 		Zodiac * zodiac = get_sign(birth_date);
 
 		printf("Your sign is a %s!\n", zodiac->name);
 
-		int moon_phase = moon_phase(current_date);
+		Moon moon_phase = get_moon_enum(moon_phase(current_date));
 
-		const char * fortune = get_fortune(zodiac, moon);
+		const char * fortune = get_fortune(zodiac, moon_phase);
 		printf("Your fortune is %s\n", fortune);
 
 		free(birth_date);
@@ -128,11 +136,12 @@ void upload_csv()
 void get_current_moon()
 {
 	Date * current_date = get_current_date();
-	//char *phase = convert_moon_phase_to_string(moon_phase(current_date));
-	//printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,phase);
+	int your_moon = moon_phase(current_date);
+	char* your_moon_string = convert_moon_phase_to_string(your_moon);
+	printf("The moon phase on your birthday this year is a %s!\n", your_moon_string);
 }
 
-void get_any_moon()
+void get_birthday_moon()
 {
 	int month;
 	printf("Enter a month as a number (example: May would be 5): ");
@@ -141,16 +150,24 @@ void get_any_moon()
 	int day;
 	printf("Enter the the day of the month (example: 16): ");
 	scanf("%d", &day);
+
 	
 	boolean is_valid = is_valid_date(month, day);
 
 	if (is_valid)
 	{
-		Date * date = get_date(month, day);
-		Date * current_date = get_current_date();
-		//char *phase = convert_moon_phase_to_string(moon_phase(date));
-		//printf("The moon phase for that day is %s",phase);
-		free(date);
+		Date * birth_date = get_date(birthmonth, birthday, 2018);
+		int your_moon = moon_phase(birth_date);
+		char* your_moon_string = convert_moon_phase_to_string(your_moon);
+		printf("The moon phase on your birthday this year is a %s!\n", your_moon_string);
+		free(birth_date);
 	}
 	else printf("You have not entered a valid date!\n");
+}
+
+Moon get_moon_enum(int your_moon)
+{
+	if (your_moon >= 0 && your_moon <= 4) your_moon = NEW; //moon for fortune calc is new_moon
+	else { your_moon = FULL; } //moon is full for fortune calculation
+	return your_moon;
 }
