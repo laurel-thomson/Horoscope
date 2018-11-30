@@ -90,6 +90,7 @@ void print_menu()
 			break;
 		default:
 			printf("Invalid choice!\n");
+			print_menu();
 			break;
 	}
 }
