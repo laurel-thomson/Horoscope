@@ -8,6 +8,7 @@
 #define MAX_FILENAME_LENGTH 100
 
 const char * DEFAULT_FORTUNE_FILE = "MoonPhaseFortunes.csv";
+boolean isFirst = true;
 
 typedef enum FortuneTellerState {
 	TELL_FORTUNE,
@@ -36,12 +37,10 @@ int main() {
 				upload_csv();
 				break;
 			case GET_CURRENT_MOON:
-				//todo: get current moon
-				printf("Getting current moon...");
+				get_current_moon();
 				break;
 			case GET_ANY_MOON:
-				//todo: get any moon
-				printf("Getting any moon...");
+				get_any_moon();
 				break;
 			default:
 				break;
@@ -60,8 +59,9 @@ void print_menu()
 			"---------(3)Get the moon phase of any day\n"
 			"---------(4)Upload a fortune csv file\n"
 			"---------(5)Quit\n");
-	getchar();
+	if (!isFirst) getchar();
 	char c = getchar();
+	isFirst = false;
 	switch(c)
 	{
 		case '1':
@@ -105,20 +105,7 @@ void tell_fortune()
 
 		printf("Your sign is a %s!\n", zodiac->name);
 
-		Moon moon = get_moon(current_date);
-
-		char * moon_string;
-
-		if (moon == 0)
-		{
-			moon_string = "new";
-		}
-		else
-		{
-			moon_string = "full";
-		}
-
-		printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,moon_string);
+		int moon_phase = moon_phase(current_date);
 
 		const char * fortune = get_fortune(zodiac, moon);
 		printf("Your fortune is %s\n", fortune);
@@ -136,4 +123,34 @@ void upload_csv()
 	printf("What file would you like to read from? ");
 	scanf("%s",filename);
 	readFile(filename);
+}
+
+void get_current_moon()
+{
+	Date * current_date = get_current_date();
+	//char *phase = convert_moon_phase_to_string(moon_phase(current_date));
+	//printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,phase);
+}
+
+void get_any_moon()
+{
+	int month;
+	printf("Enter a month as a number (example: May would be 5): ");
+	scanf("%d", &month);
+
+	int day;
+	printf("Enter the the day of the month (example: 16): ");
+	scanf("%d", &day);
+	
+	boolean is_valid = is_valid_date(month, day);
+
+	if (is_valid)
+	{
+		Date * date = get_date(month, day);
+		Date * current_date = get_current_date();
+		//char *phase = convert_moon_phase_to_string(moon_phase(date));
+		//printf("The moon phase for that day is %s",phase);
+		free(date);
+	}
+	else printf("You have not entered a valid date!\n");
 }
