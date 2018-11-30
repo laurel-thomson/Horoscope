@@ -33,8 +33,7 @@ FortuneTellerState state;
 int main() {
 	//read in the fortunes from the default file in case the user doesn't specify a file to read from
 	readFile(DEFAULT_FORTUNE_FILE);
-	
-	printf("Welcome to your own personal ~~Fortune Teller~~\n\n");
+	printf("Welcome to your own personal ~~Fortune Teller~~\n\n\n");
 	while(state != QUIT)
 	{
 		print_menu();
@@ -115,13 +114,14 @@ void tell_fortune()
 		Zodiac * zodiac = get_sign(birth_date);
 
 		printf("Your sign is a %s!\n", zodiac->name);
-		print_ascii_art(zodiac);
+		print_zodiac_art(zodiac);
+		printf("\n\n\n");
 
 		Moon moon = get_moon_enum(moon_phase(current_date));
 
 		const char * fortune = get_fortune(zodiac, moon);
-		printf("Your fortune is %s\n", fortune);
-
+		printf("Your fortune is:\n%s\n\n", fortune);
+		printf("------------------------------------------\n\n");
 		free(birth_date);
 		free(current_date);
 		free(zodiac);
@@ -134,7 +134,10 @@ void upload_csv()
 	char filename[MAX_FILENAME_LENGTH];
 	printf("What file would you like to read from? ");
 	scanf("%s",filename);
-	readFile(filename);
+	if(readFile(filename))
+	{
+		printf("\nFile successfully read!\n\n");
+	}
 }
 
 void get_current_moon()
@@ -142,7 +145,9 @@ void get_current_moon()
 	Date * current_date = get_current_date();
 	int your_moon = moon_phase(current_date);
 	char* your_moon_string = convert_moon_phase_to_string(your_moon);
-	printf("Today is %d/%d/%d and the moon phase is  %s!\n", current_date->month->monthNumber, current_date->day, current_date->year,your_moon_string);
+	printf("\nToday is %d/%d/%d and the moon phase is a %s!\n\n", current_date->month->monthNumber, current_date->day, current_date->year,your_moon_string);
+    print_moon_art(your_moon);
+	printf("------------------------------------------\n\n");
 }
 
 void get_birthday_moon()
@@ -162,10 +167,12 @@ void get_birthday_moon()
 		Date * birth_date = get_date(birthmonth, birthday, 2018);
 		int your_moon = moon_phase(birth_date);
 		char* your_moon_string = convert_moon_phase_to_string(your_moon);
-		printf("The moon phase on your birthday this year is a %s!\n", your_moon_string);
+		printf("\nThe moon phase on your birthday this year is a %s!\n\n", your_moon_string);
+		print_moon_art(your_moon);
+        printf("------------------------------------------\n\n");
 		free(birth_date);
 	}
-	else printf("You have not entered a valid date!\n");
+	else printf("\nYou have not entered a valid date!\n\n");
 }
 
 Moon get_moon_enum(int your_moon)

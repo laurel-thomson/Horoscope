@@ -11,21 +11,16 @@ typedef enum Moon {
 
 char * fortunes[2][12];
 
-char * test_get_fortune(int x, int y)
-{
-	return fortunes[x][y];
-}
-
 char * get_fortune(Zodiac * zodiac, int moon)
 {
 	return fortunes[moon][zodiac->index];
 }
 
-void readFile(char * filename){
+boolean readFile(const char * filename){
 	if (filename == "" || filename == NULL)
 	{
-		printf("No file name given\n");
-		return;
+		printf("\nNo file name given\n\n");
+		return false;
 	}
 
 	FILE * f = fopen(filename, "r");
@@ -33,8 +28,8 @@ void readFile(char * filename){
 
    	if(f == NULL)
 	{
-	    printf("Error reading file\n");
-		return;
+	    printf("\nError reading file\n\n");
+		return false;
 	}
 	
    for(int i = 0; i < 2; i++)
@@ -44,16 +39,16 @@ void readFile(char * filename){
 			fortunes[i][j] = malloc(sizeof(char) * 1024);
 			fgets(str, 1024, f);
 			strcpy(fortunes[i][j],str);
-			printf("x: %d, y: %d\n %s\n\n",i,j, fortunes[i][j]);
 		}
    }
    fclose(f);
+   return true;
 }
 
 //Method to free inputted fortune data
 void freeData(){
-   for(int i = 1; i <= 2; i++){
-     for(int j = 1; j<= 12; j++){
+   for(int i = 0; i < 2; i++){
+     for(int j = 0; j< 12; j++){
      	free(fortunes[i][j]);
      }
    }

@@ -13,9 +13,9 @@ char * pisces_art = "\n\n"
 "  .-'    `-.\n\n";
 
 char * aries_art = "\n\n"
-"  (_  \ /  _)    \n"
-"       |         \n"
-"       |         \n\n";
+"  (_  \ /  _)\n"
+"       |\n"
+"       |\n\n";
 
 char * taurus_art = "\n\n"
 "    .     .\n"
@@ -81,8 +81,107 @@ char * capricorn_art = "\n\n"
 "      \  /   ;\n"
 "       \/ __.'\n\n";
 
+//moon art source: http://www.oocities.org/spunk1111/celestal.htm
 
-void print_ascii_art(Zodiac * zodiac)
+char * new_moon_art = "\n\n"
+"        _..._ \n"  
+"      .:::::::.  \n"  
+"     :::::::::::\n"
+"     :::::::::::  \n"
+"     `:::::::::'  \n"
+"       `':::''\n\n";
+
+char * first_quarter_art = "\n\n"
+"       _..._     \n"
+"      .::::  `.    \n"
+"     ::::::    :\n"
+"     ::::::    :  \n"
+"     `:::::   .'  \n"
+"       `'::.-' \n\n";
+
+char * waning_crescent_art = "\n\n"
+"        _..._     \n"
+"      .' .::::.    \n"
+"     :  :::::::: \n"
+"     :  ::::::::  \n"
+"     `. '::::::'  \n"
+"       `-.::'' \n\n";
+
+char * full_moon_art = "\n\n"
+"       _..._     \n"
+"      .'     `.    \n"
+"     :         :\n"
+"     :         :  \n"
+"     `.       .'  \n"
+"       `-...-'  \n\n";
+
+char * waning_gibbous_art = "\n\n"
+"       _..._     \n"
+"      .'   `::.    \n"
+"     :       :::\n"
+"     :       :::  \n"
+"     `.     .::'  \n"
+"       `-..:'' \n\n";
+
+char * last_quarter_art = "\n\n"
+"        _..._     \n"
+"      .'  ::::.    \n"
+"     :    :::::: \n"
+"     :    ::::::  \n"
+"     `.   :::::'  \n"
+"       `-.::''  \n\n";
+
+char * waxing_gibbous_art = "\n\n"
+"      _..._     \n"
+"      .::'   `.    \n"
+"     :::       : \n"
+"     :::       :  \n"
+"     `::.     .'  \n"
+"       `':..-'   \n\n";
+
+char * waxing_crescent_art = "\n\n"
+"        _..._     \n"
+"      .::::. `.    \n"
+"     :::::::.  :\n"
+"     ::::::::  :  \n"
+"     `::::::' .'  \n"
+"       `'::'-' \n\n";
+
+void print_moon_art(int phase)
+{
+	switch(phase)
+	{
+		case 0:
+			printf("%s",new_moon_art);
+			break;
+		case 1:
+			printf("%s",first_quarter_art);
+			break;
+		case 2:
+			printf("%s",waning_crescent_art);
+			break;
+		case 3:
+			printf("%s",full_moon_art);
+			break;
+		case 4:
+			printf("%s",waning_gibbous_art);
+			break;
+		case 5:
+			printf("%s",last_quarter_art);
+			break;
+		case 6:
+			printf("%s",waxing_gibbous_art);
+			break;
+		case 7:
+			printf("%s",waxing_crescent_art);
+			break;
+		default:
+			printf("Error.");
+			break;
+	}
+}
+
+void print_zodiac_art(Zodiac * zodiac)
 {
 	switch(zodiac->index)
 	{
