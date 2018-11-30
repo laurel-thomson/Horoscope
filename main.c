@@ -7,13 +7,14 @@
 
 #define MAX_FILENAME_LENGTH 100
 
-const char * DEFAULT_FORTUNE_FILE = "MoonPhaseFortunes.csv";
+char * DEFAULT_FORTUNE_FILE = "MoonPhaseFortunes.csv";
 
 int main() {
 
 	printf("Welcome to your own personal ~~Fortune Teller~~\n\n");
-	printf("Would you like to specify your own fortune CSV file? (y)es or (n): ");
-	char c = getchar();
+	printf("Would you like to specify your own fortune CSV file? (y)es or (n)o: ");
+	char c;
+	scanf(" %c", &c);
 
 	if (c == 'y' || c == 'Y')
 	{
@@ -23,15 +24,16 @@ int main() {
 		scanf("%s",filename);
 		readFile(filename);
 	}
-	else
+	else if(c == 'n' || c == 'N')
 	{
 		//read in from the default file
 		readFile(DEFAULT_FORTUNE_FILE);
 	}
+	else{printf("Invalid option");}
 
 	while (true)
 	{
-		printf("Would you like to have your fortune told? (y)es or (n)o ");
+		printf("Would you like to have your fortune told? (y)es or (n)o: ");
 		char a;
 		scanf(" %c",&a);
 		if (a == 'n' || a == 'N')
@@ -72,7 +74,7 @@ int main() {
 
 			printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,moon_string);
 
-			const char * fortune = get_fortune(zodiac, moon);
+			char * fortune = get_fortune(zodiac, moon);
 			printf("Your fortune is %s\n", fortune);
 
 			free(birth_date);
