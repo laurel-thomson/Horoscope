@@ -74,7 +74,7 @@ int main() {
 
 			printf("Today is %d/%d and it is a %s moon!\n",current_date->month->monthNumber,current_date->day,moon_string);
 
-			char * fortune = get_fortune(zodiac, moon); //Try calling getfortune(#,#)
+			char * fortune = get_fortune(1,1); //Try calling getfortune(#,#)
 			printf("Your fortune is %s\n", fortune);
 
 			free(birth_date);

@@ -9,11 +9,12 @@ typedef enum Moon {
 	FULL
 } Moon;
 
-//the fortunes are hard-coded in for now - will need to update this to read from a CSV
 char * fortunes[2][12];
 
-const char * get_fortune(int zodiac, int moon)
+char * get_fortune(int zodiac, int moon)
 {
+	//printf(" %s\n", fortunes[1][1]);
+	//printf(" %d %d", zodiac, moon);
 	return fortunes[moon][zodiac];
 }
 
@@ -42,17 +43,20 @@ void readFile(char * filename){
 	         fortunes[i][j] = malloc(sizeof(char) * 1024);
 		 fgets(str, 1024, f);
 		 char * input[3];
-		 int i = 0;
+		 int n = 0;
 	         for(char * token = strtok(str, ","); token != NULL; token = strtok(NULL, ",")){
-		    input[i] = token;
-		    i++;
+		    input[n] = token;
+		    n++;
 		 }
 	         fortunes[i][j] = input[2];
-		 printf("%s\n", fortunes[i][j]);
+		 //printf("Fortune saved: %s\n", fortunes[i][j]);
 	      }
-	   }
+	   }//printf("Fortunes saved: %s\n", fortunes[1][1]);
 	}
+   //printf("Fortunes saved:%s\n", fortunes[1][1]);
    fclose(f);
+   //free(fortunes[1][1]);
+   printf("Fortunes saved: %s\n", fortunes[1][1]);
    }
 }
 
