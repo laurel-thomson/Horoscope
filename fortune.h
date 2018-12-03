@@ -17,25 +17,30 @@ char * get_fortune(int zodiac, int moon)
 	//printf(" %d %d", zodiac, moon);
 	return fortunes[moon][zodiac];
 }
-
-//this is hard-coded in for now as well - will need to read in from moon phases CSV
-Moon get_moon(Date * date)
+char * test_get_fortune(int x, int y)
 {
-	if (date->day < 16) return NEW;
-	return FULL;
+	return fortunes[x][y];
 }
 
-//Code to read in from CSV file
+//char * get_fortune(Zodiac * zodiac, int moon)
+//{
+	//return fortunes[moon][zodiac->index];
+//}
+
 void readFile(char * filename){
-   if(filename == "" || filename == NULL){printf("No file name given\n");}
-   else{
-	strtok(filename, "\n");
-	//printf("Creating fortune from default file: %s\n", filename);
+	if (filename == "" || filename == NULL)
+	{
+		printf("No file name given\n");
+		return;
+	}
+
 	FILE * f = fopen(filename, "r");
    	char str[1024];
 
-   	if(f == NULL){
+   	if(f == NULL)
+	{
 	    printf("Error reading file\n");
+		return;
 	}
  	else{
 	   for(int i = 1; i <= 2; i++){
@@ -57,7 +62,18 @@ void readFile(char * filename){
    fclose(f);
    //free(fortunes[1][1]);
    printf("Fortunes saved: %s\n", fortunes[1][1]);
+	
+   for(int i = 0; i < 2; i++)
+   {
+		for(int j = 0; j <= 11; j++)
+		{  
+			fortunes[i][j] = malloc(sizeof(char) * 1024);
+			fgets(str, 1024, f);
+			strcpy(fortunes[i][j],str);
+			printf("x: %d, y: %d\n %s\n\n",i,j, fortunes[i][j]);
+		}
    }
+   fclose(f);
 }
 
 //Method to free inputted fortune data

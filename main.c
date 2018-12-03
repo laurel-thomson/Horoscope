@@ -10,27 +10,9 @@
 char * DEFAULT_FORTUNE_FILE = "MoonPhaseFortunes.csv";
 
 int main() {
-
-	printf("Welcome to your own personal ~~Fortune Teller~~\n\n");
-	printf("Would you like to specify your own fortune CSV file? (y)es or (n)o: ");
-	char c;
-	scanf(" %c", &c);
-
-	if (c == 'y' || c == 'Y')
-	{
-		//read in from a csv of the user's choice
-		char filename[MAX_FILENAME_LENGTH];
-		printf("What file would you like to read from? ");
-		scanf("%s",filename);
-		readFile(filename);
-	}
-	else if(c == 'n' || c == 'N')
-	{
-		//read in from the default file
-		readFile(DEFAULT_FORTUNE_FILE);
-	}
-	else{printf("Invalid option");}
-
+	
+	readFile(DEFAULT_FORTUNE_FILE);
+	
 	while (true)
 	{
 		printf("Would you like to have your fortune told? (y)es or (n)o: ");
@@ -82,8 +64,18 @@ int main() {
 			free(zodiac);
 		}
 		else printf("You have not entered a valid date!\n");
+		int x;
+		printf("Enter x: ");
+		scanf(" %d",&x);
+		
+		int y;
+		printf("Enter y: ");
+		scanf(" %d",&y);
+		
+		char * fortune = test_get_fortune(x,y);
+		
+		printf("%s\n",fortune);
 	}
-	//call function to free fortune memory
 	freeData();
 	return 0;
 }
