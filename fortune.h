@@ -17,7 +17,7 @@ char * get_fortune(Zodiac * zodiac, int moon)
 }
 
 boolean readFile(const char * filename){
-	if (filename == "" || filename == NULL)
+	if (filename == NULL)
 	{
 		printf("\nNo file name given\n\n");
 		return false;
