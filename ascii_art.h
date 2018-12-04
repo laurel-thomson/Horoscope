@@ -15,7 +15,7 @@ char * pisces_art = "\n\n"
 "  .-'    `-.\n\n";
 
 char * aries_art = "\n\n"
-"  (_  \ /  _)\n"
+"  (_  \\ /  _)\n"
 "       |\n"
 "       |\n\n";
 
@@ -78,10 +78,10 @@ char * sagittarius_art = "\n\n"
 
 char * capricorn_art = "\n\n"
 "            _\n"
-"    \      /_)   \n" 
-"     \    /`.\n"
-"      \  /   ;\n"
-"       \/ __.'\n\n";
+"    \\      /_)   \n" 
+"     \\    /`.\n"
+"      \\  /   ;\n"
+"       \\/ __.'\n\n";
 
 //moon art source: http://www.oocities.org/spunk1111/celestal.htm
 
