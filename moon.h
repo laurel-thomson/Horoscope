@@ -53,7 +53,7 @@ int moon_phase(Date * d) //int year, int month, int day
   }
   else if (days_into > 7 && days_into <= 15)
   {
-    if (days_into >= 14 && days_into < 16) phase = 3;
+    if (days_into >= 14 && days_into <= 16) phase = 3;
     else { phase = 4; };
   }
   else if (days_into > 15 && days_into <= 22)
@@ -82,22 +82,22 @@ char* convert_moon_phase_to_string(int moon)
       name = "First Quarter";
       break;
     case 2:
-      name = "Waning Crescent";
+      name = "Waxing Crescent";
       break;
     case 3:
       name = "Full Moon";
       break;
     case 4:
-      name = "Waning Gibbous";
+      name = "Waxing Gibbous";
       break;
     case 5:
       name = "Last Quarter";
       break;
     case 6:
-      name = "Waxing Gibbous";
+      name = "Waning Gibbous";
       break;
     case 7:
-      name = "Waxing Crescent";
+      name = "Waning Crescent";
       break;
     default:
       name = "Error";

@@ -6,7 +6,7 @@
 char * aquarius_art = "\n\n"
 "   .-\"-._.-\"-._.-\n"
 "   .-\"-._.-\"-._.-\n\n";
-	
+
 char * pisces_art = "\n\n"
 "   `-.    .-'\n"
 "     :  :\n"
@@ -64,7 +64,7 @@ char * libra_art = "\n\n"
 char * scorpio_art = "\n\n"
 "   _\n"
 "  ' `:--.--.\n"
-"     |  |  |    \n" 
+"     |  |  |    \n"
 "     |  |  |\n"
 "     |  |  |  ..,\n"
 "           `---':\n\n";
@@ -78,7 +78,7 @@ char * sagittarius_art = "\n\n"
 
 char * capricorn_art = "\n\n"
 "            _\n"
-"    \      /_)   \n" 
+"    \      /_)   \n"
 "     \    /`.\n"
 "      \  /   ;\n"
 "       \/ __.'\n\n";
@@ -86,8 +86,8 @@ char * capricorn_art = "\n\n"
 //moon art source: http://www.oocities.org/spunk1111/celestal.htm
 
 char * new_moon_art = "\n\n"
-"        _..._ \n"  
-"      .:::::::.  \n"  
+"        _..._ \n"
+"      .:::::::.  \n"
 "     :::::::::::\n"
 "     :::::::::::  \n"
 "     `:::::::::'  \n"
@@ -160,22 +160,22 @@ void print_moon_art(int phase)
 			printf("%s",first_quarter_art);
 			break;
 		case 2:
-			printf("%s",waning_crescent_art);
+			printf("%s",waxing_crescent_art);
 			break;
 		case 3:
 			printf("%s",full_moon_art);
 			break;
 		case 4:
-			printf("%s",waning_gibbous_art);
+			printf("%s",waxing_gibbous_art);
 			break;
 		case 5:
 			printf("%s",last_quarter_art);
 			break;
 		case 6:
-			printf("%s",waxing_gibbous_art);
+			printf("%s",waning_gibbous_art);
 			break;
 		case 7:
-			printf("%s",waxing_crescent_art);
+			printf("%s",waning_crescent_art);
 			break;
 		default:
 			printf("Error.");
