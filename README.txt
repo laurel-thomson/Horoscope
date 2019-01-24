@@ -1,4 +1,4 @@
-Welcome to the Fortune Teller!
+# Horoscope
 
 -------------------------------------------------------
 
